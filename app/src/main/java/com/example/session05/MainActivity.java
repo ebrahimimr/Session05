@@ -1,15 +1,20 @@
 package com.example.session05;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,37 +24,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         RecyclerView recycler = findViewById(R.id.recycler);
         LinearLayoutManager manager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         recycler.setLayoutManager(manager);
-
         MyAdapter adapter = new MyAdapter();
-        recycler.setAdapter();
+        recycler.setAdapter(adapter);
 
-        Intent intent = new Intent(MainActivity.this, TestForegroundService.class);
-        recycler.addOnItemTouchListener(new adapter.cl )
-
-
-        Button bt1 = findViewById(R.id.btnStart);
-        Button bt2 = findViewById(R.id.btnEnd);
-        bt1.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View v) {
-                                       startForegroundService(intent);
-                                   }
-                               }
-        );
-        bt2.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View v) {
-                                       stopService(intent);
-
-                                   }
-                               }
-        );
-
-
-
+        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        Button menuIcon = findViewById(R.id.btn);
+        menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(Gravity.LEFT);
+            }
+        });
 
     }
 }

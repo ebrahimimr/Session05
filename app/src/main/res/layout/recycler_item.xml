@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="#FFF8BD">
-    <TextView
-        android:id="@+id/txtTitle"
+    <Button
+        android:id="@+id/btnTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
